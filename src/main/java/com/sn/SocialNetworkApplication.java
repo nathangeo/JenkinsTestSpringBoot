@@ -19,7 +19,7 @@ public class SocialNetworkApplication {
 		SpringApplication.run(SocialNetworkApplication.class, args);
 		//ApplicationContext ac = new ClassPathXmlApplicationContext("beans.xml");
 		//addSomeUsers(ac);
-		
+		//extratext
 		
 		//UserDAO gd=(UserDAO)ac.getBean("userDAO");
 		//List<User> glist=gd.findUserByUsername("Gibson");
