@@ -16,9 +16,9 @@ import com.sn.repos.UserDAO;
 public class SocialNetworkApplication {
 
 	public static void main(String[] args) {
-		//SpringApplication.run(SocialNetworkApplication.class, args);
-		ApplicationContext ac = new ClassPathXmlApplicationContext("beans.xml");
-		addSomeUsers(ac);
+		SpringApplication.run(SocialNetworkApplication.class, args);
+		//ApplicationContext ac = new ClassPathXmlApplicationContext("beans.xml");
+		//addSomeUsers(ac);
 		
 		
 		//UserDAO gd=(UserDAO)ac.getBean("userDAO");
