@@ -14,7 +14,7 @@ import org.springframework.stereotype.Component;
 @Component("user")//generic stereotype for any spring managed component
 @Scope("prototype")
 @Entity
-@Table(name="USER")
+@Table(name="USERS")
 public class User {
 	
 	

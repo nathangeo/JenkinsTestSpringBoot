@@ -1,5 +1,7 @@
 package com.sn;
 
+import java.util.List;
+
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.context.ApplicationContext;
@@ -14,12 +16,13 @@ import com.sn.repos.UserDAO;
 public class SocialNetworkApplication {
 
 	public static void main(String[] args) {
-		SpringApplication.run(SocialNetworkApplication.class, args);
+		//SpringApplication.run(SocialNetworkApplication.class, args);
 		ApplicationContext ac = new ClassPathXmlApplicationContext("beans.xml");
 		addSomeUsers(ac);
 		
-		//GuitarDAO gd=(GuitarDAO)ac.getBean("guitarDAO");
-		//List<Guitars> glist=gd.findGuitarbyMake("Gibson");
+		
+		//UserDAO gd=(UserDAO)ac.getBean("userDAO");
+		//List<User> glist=gd.findUserByUsername("Gibson");
 		//System.out.println(glist);s
 		//((AbstractApplicationContext) ac).close();
 	}
@@ -29,7 +32,7 @@ public class SocialNetworkApplication {
 
 	
 	
-		UserDAO gd=(UserDAO)ac.getBean("userDao");
+		UserDAO gd=(UserDAO)ac.getBean("userDAO");
 		gd.save(u1);
 
 }

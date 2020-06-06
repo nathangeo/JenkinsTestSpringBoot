@@ -2,7 +2,10 @@ package com.sn.beans;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.SequenceGenerator;
 import javax.persistence.Table;
 
 import org.springframework.context.annotation.Scope;
@@ -14,10 +17,13 @@ import org.springframework.stereotype.Component;
 @Table(name="USER_LIKES")
 public class UserLikes {
 	
-	@Id
+	
 	@Column(name="USERNAME")
 	private String username;
 	
+	@Id
+	@GeneratedValue(strategy=GenerationType.SEQUENCE, generator="postSequence")
+	@SequenceGenerator(allocationSize=1, name="postSequence", sequenceName="SQ_POST_PK")
 	@Column(name="POST_ID")
 	private int post_id;
 	public UserLikes() {
