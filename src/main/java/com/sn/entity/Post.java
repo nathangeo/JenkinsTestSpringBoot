@@ -39,7 +39,7 @@ public class Post {
     @PrePersist
     protected void prePersist() {
         if (this.date == null) {
-        	DateFormat df = new SimpleDateFormat("dd/MM/yy HH:mm:ss");
+        	DateFormat df = new SimpleDateFormat("MM/dd/yy HH:mm:ss");
         	date = df.format(Calendar.getInstance().getTime());
         }
     }
