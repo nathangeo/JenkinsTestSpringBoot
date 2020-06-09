@@ -26,5 +26,8 @@ import com.sn.entity.User;
     	 return this.userDao.findUserByUsername(username);
      }
      
+     public boolean existsByUsernameAndPassword(String username, String password) {
+    	 return this.userDao.existsByUsernameAndPassword(username, password);
+     }
      //other methods omitted for brevity
  }

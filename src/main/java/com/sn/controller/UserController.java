@@ -41,7 +41,13 @@ public class UserController {
     	return this.userService.findUserByusername(username);
     }
     
-    
+    @RequestMapping(value = "/login", method = RequestMethod.POST,
+    		consumes = MediaType.APPLICATION_JSON_VALUE, produces =  MediaType.APPLICATION_JSON_VALUE)
+    @ResponseStatus(code = HttpStatus.OK)
+    public boolean loginUser(@RequestBody User user) {
+    	return this.userService.existsByUsernameAndPassword(user.getUsername(), user.getPassword());
+    	
+    }
     //other controllers omitted for brevity
 
 }
