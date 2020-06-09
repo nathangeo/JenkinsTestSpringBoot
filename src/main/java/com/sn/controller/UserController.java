@@ -18,6 +18,7 @@ import com.sn.service.UserService;
 
 @RestController
 @RequestMapping("/user")
+@CrossOrigin
 public class UserController {
     @Autowired
     UserService userService;
@@ -27,7 +28,7 @@ public class UserController {
         return userService.getAllUsers();
     }
 
-    @CrossOrigin
+    
     @RequestMapping(value = "/adduser", method = RequestMethod.POST,
             consumes = MediaType.APPLICATION_JSON_VALUE, produces = MediaType.APPLICATION_JSON_VALUE)
     @ResponseStatus(code = HttpStatus.OK)

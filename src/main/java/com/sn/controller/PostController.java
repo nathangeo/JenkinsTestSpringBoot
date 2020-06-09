@@ -1,8 +1,11 @@
 package com.sn.controller;
 
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
+import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
@@ -15,6 +18,7 @@ import com.sn.service.PostService;
 
 @RestController
 @RequestMapping("/post")
+@CrossOrigin
 public class PostController {
 
 	@Autowired
@@ -28,4 +32,10 @@ public class PostController {
         return this.postService.addPost(p);
     }
 	
+    @RequestMapping(value = "/all", method = RequestMethod.GET, produces = MediaType.APPLICATION_JSON_VALUE)
+    @ResponseStatus(code = HttpStatus.OK)
+    @ResponseBody()
+    public List<Post> getAllPost() {
+    	return this.postService.getAllPosts();
+    }
 }

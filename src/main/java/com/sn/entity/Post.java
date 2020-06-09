@@ -1,16 +1,23 @@
 package com.sn.entity;
 
+import java.text.DateFormat;
+import java.text.SimpleDateFormat;
+import java.util.Calendar;
+
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.PrePersist;
 import javax.persistence.Table;
+
 
 @Entity
 @Table(name="POST_TABLE")
 public class Post {
 
+	
     @Column(name = "ID")
     @Id
     @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "POST_PK_SEQ")
@@ -24,7 +31,20 @@ public class Post {
     
     @Column(name = "POST_IMAGE")
     private String image;
+    
+    
+    @Column(name = "POST_TIME")
+    private String date;
+    
+    @PrePersist
+    protected void prePersist() {
+        if (this.date == null) {
+        	DateFormat df = new SimpleDateFormat("dd/MM/yy HH:mm:ss");
+        	date = df.format(Calendar.getInstance().getTime());
+        }
+    }
 
+    
 	public Post() {
 		super();
 	}
@@ -100,10 +120,29 @@ public class Post {
 		this.image = image;
 	}
 
+
+	public String getDate() {
+		return date;
+	}
+
+
+	public void setDate(String date) {
+		this.date = date;
+	}
+
+
 	@Override
 	public String toString() {
-		return "Post [id=" + id + ", username=" + username + ", post=" + post + ", image=" + image + "]";
+		return "Post [id=" + id + ", username=" + username + ", post=" + post + ", image=" + image + ", date=" + date
+				+ "]";
 	}
+
+
+	
+
+	
+	
+
     
     
 	
