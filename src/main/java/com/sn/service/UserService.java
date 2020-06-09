@@ -21,5 +21,10 @@ import com.sn.entity.User;
          return this.userDao.save(user);
      }
  
+     
+     public User findUserByusername(String username) {
+    	 return this.userDao.findUserByUsername(username);
+     }
+     
      //other methods omitted for brevity
  }

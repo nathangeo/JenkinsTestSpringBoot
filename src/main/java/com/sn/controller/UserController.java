@@ -31,6 +31,13 @@ public class UserController {
         return this.userService.addUser(user);
     }
     
+    @RequestMapping(value = "/findbyusername", method = RequestMethod.POST,
+    		consumes = MediaType.ALL_VALUE, produces = MediaType.APPLICATION_JSON_VALUE)
+    public User findUserByUsername(@RequestBody String username) {
+    	return this.userService.findUserByusername(username);
+    }
+    
+    
     //other controllers omitted for brevity
 
 }

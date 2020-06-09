@@ -19,7 +19,7 @@ public class User {
     private String username;
   
     @Column(name = "PASSWORD")
-    private Integer password;
+    private String password;
     
     @Column(name = "USER_EMAIL")
     private String email;
@@ -36,7 +36,7 @@ public class User {
     protected User() {
     }
 
-	public User(Integer id, String username, Integer password, String email, String firstName, String lastName,
+	public User(Integer id, String username, String password, String email, String firstName, String lastName,
 			String picLink) {
 		super();
 		this.id = id;
@@ -48,7 +48,7 @@ public class User {
 		this.picLink = picLink;
 	}
 
-	public User(String username, Integer password, String email, String firstName, String lastName) {
+	public User(String username, String password, String email, String firstName, String lastName) {
 		super();
 		this.username = username;
 		this.password = password;
@@ -82,11 +82,11 @@ public class User {
 		this.username = username;
 	}
 
-	public Integer getPassword() {
+	public String getPassword() {
 		return password;
 	}
 
-	public void setPassword(Integer password) {
+	public void setPassword(String password) {
 		this.password = password;
 	}
 
