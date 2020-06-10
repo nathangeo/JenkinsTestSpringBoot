@@ -13,6 +13,7 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.ResponseStatus;
 import org.springframework.web.bind.annotation.RestController;
 
+import com.sn.beans.ChangePass;
 import com.sn.entity.User;
 import com.sn.service.UserService;
 
@@ -55,6 +56,17 @@ public class UserController {
     	}
     	
     }
-    //other controllers omitted for brevity
+    
+    @RequestMapping(value = "/changepass", method = RequestMethod.POST,
+    		consumes = MediaType.APPLICATION_JSON_VALUE, produces =  MediaType.APPLICATION_JSON_VALUE)
+    @ResponseStatus(code = HttpStatus.OK)
+    public User loginUser(@RequestBody ChangePass cp) {
+    	if(this.userService.existsByUsernameAndPassword(cp.getUsername(), cp.getPasswordOld()) == false) {
+    		return null;
+    	} else {
+    		return this.userService.updatePassword(cp.getUsername(), cp.getPasswordOld(), cp.getPasswordNew());
+    	}
+    	
+    }
 
 }

@@ -29,5 +29,12 @@ import com.sn.entity.User;
      public boolean existsByUsernameAndPassword(String username, String password) {
     	 return this.userDao.existsByUsernameAndPassword(username, password);
      }
-     //other methods omitted for brevity
- }
+ 
+     public User updatePassword(String username, String passwordOld, String passwordNew) {
+    	 User u = this.userDao.findUserByUsername(username);
+    	 u.setPassword(passwordNew);
+    	 this.userDao.save(u);
+    	 return u;
+     }
+
+}
