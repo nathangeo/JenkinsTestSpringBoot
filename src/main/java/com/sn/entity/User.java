@@ -1,5 +1,7 @@
 package com.sn.entity;
 
+import java.sql.Blob;
+
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -31,15 +33,28 @@ public class User {
     private String lastName;
     
     @Column(name="PICTURE_LINK", nullable = true)
-    private String picLink;
+    private Blob picLink;
+
   
     protected User() {
     }
 
 	public User(Integer id, String username, String password, String email, String firstName, String lastName,
-			String picLink) {
+			Blob picLink) {
 		super();
 		this.id = id;
+		this.username = username;
+		this.password = password;
+		this.email = email;
+		this.firstName = firstName;
+		this.lastName = lastName;
+		this.picLink = picLink;
+	}
+
+	
+	
+	public User(String username, String password, String email, String firstName, String lastName, Blob picLink) {
+		super();
 		this.username = username;
 		this.password = password;
 		this.email = email;
@@ -57,7 +72,7 @@ public class User {
 		this.lastName = lastName;
 	}
 
-	public User(Integer id, String picLink) {
+	public User(Integer id, Blob picLink) {
 		super();
 		this.id = id;
 		this.picLink = picLink;
@@ -120,18 +135,18 @@ public class User {
 		this.lastName = lastName;
 	}
 
-	public String getPicLink() {
+	public Blob getPicLink() {
 		return picLink;
 	}
 
-	public void setPicLink(String picLink) {
+	public void setPicLink(Blob picLink) {
 		this.picLink = picLink;
 	}
 
 	@Override
 	public String toString() {
 		return "User [id=" + id + ", username=" + username + ", password=" + password + ", email=" + email
-				+ ", firstName=" + firstName + ", lastName=" + lastName + ", picLink=" + picLink + "]";
+				+ ", firstName=" + firstName + ", lastName=" + lastName + "]";
 	}
 
     
