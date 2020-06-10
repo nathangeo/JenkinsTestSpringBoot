@@ -13,7 +13,7 @@ public class Likes {
 
     @Column(name = "ID")
     @Id
-    @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "COMMENT_PK_SEQ")
+    @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "LIKES_PK_SEQ")
     private Integer id;
     
     @Column(name = "POST_ID")
@@ -25,6 +25,15 @@ public class Likes {
 	public Likes() {
 		super();
 	}
+
+	
+	
+	public Likes(Integer pId) {
+		super();
+		this.pId = pId;
+	}
+
+
 
 	public Likes(Integer pId, Integer cId) {
 		super();
