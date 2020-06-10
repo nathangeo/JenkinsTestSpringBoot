@@ -33,14 +33,14 @@ public class User {
     private String lastName;
     
     @Column(name="PICTURE_LINK", nullable = true)
-    private Blob picLink;
+    private byte[] picLink;
 
   
     protected User() {
     }
 
 	public User(Integer id, String username, String password, String email, String firstName, String lastName,
-			Blob picLink) {
+			byte[] picLink) {
 		super();
 		this.id = id;
 		this.username = username;
@@ -53,7 +53,12 @@ public class User {
 
 	
 	
-	public User(String username, String password, String email, String firstName, String lastName, Blob picLink) {
+	public User(byte[] picLink) {
+		super();
+		this.picLink = picLink;
+	}
+
+	public User(String username, String password, String email, String firstName, String lastName, byte[] picLink) {
 		super();
 		this.username = username;
 		this.password = password;
@@ -72,7 +77,7 @@ public class User {
 		this.lastName = lastName;
 	}
 
-	public User(Integer id, Blob picLink) {
+	public User(Integer id, byte[] picLink) {
 		super();
 		this.id = id;
 		this.picLink = picLink;
@@ -135,11 +140,11 @@ public class User {
 		this.lastName = lastName;
 	}
 
-	public Blob getPicLink() {
+	public byte[] getPicLink() {
 		return picLink;
 	}
 
-	public void setPicLink(Blob picLink) {
+	public void setPicLink(byte[] picLink) {
 		this.picLink = picLink;
 	}
 
