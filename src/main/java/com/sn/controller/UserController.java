@@ -75,15 +75,15 @@ public class UserController {
     }
     
     @PostMapping("/updateprofilepic")
-    public List<String> uploadProfilePic(@RequestParam("imageFile") MultipartFile file) throws IOException {
-    	List<String> rtrn = new ArrayList<String>();
+    public List<byte[]> uploadProfilePic(@RequestParam("imageFile") MultipartFile file) throws IOException {
+    	List<byte[]> rtrn = new ArrayList<byte[]>();
     	String s = file.getOriginalFilename();
     	String username = s.replace(".png", "");
     	System.out.println(username);
     	User user = this.userService.findUserByusername(username);
         user.setPicLink(file.getBytes());
         this.userService.addUser(user);
-        rtrn.add("Successfully updated profile pic");
+        rtrn.add(file.getBytes());
         return rtrn;
     }    
 
