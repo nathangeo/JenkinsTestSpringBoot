@@ -14,7 +14,6 @@ import org.springframework.web.bind.annotation.ResponseStatus;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.sn.entity.Comment;
-import com.sn.entity.Post;
 import com.sn.service.CommentService;
 
 @RestController

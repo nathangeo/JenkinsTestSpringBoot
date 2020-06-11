@@ -1,6 +1,5 @@
 package com.sn.entity;
 
-import java.sql.Blob;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;

@@ -7,7 +7,6 @@ import org.springframework.stereotype.Service;
 
 import com.sn.dao.CommentDAO;
 import com.sn.entity.Comment;
-import com.sn.entity.Post;
 
 @Service
 public class CommentService {
