@@ -1,15 +1,21 @@
 package com.sn.controller;
 
 import java.io.IOException;
+import java.nio.file.Files;
 import java.sql.Blob;
+import java.util.ArrayList;
 import java.util.List;
 
+import org.apache.tomcat.util.http.fileupload.IOUtils;
+import org.apache.tomcat.util.json.JSONParser;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
 import org.springframework.http.ResponseEntity.BodyBuilder;
 import org.springframework.web.bind.annotation.CrossOrigin;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -21,6 +27,7 @@ import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.multipart.MultipartFile;
 
 import com.sn.beans.ChangePass;
+import com.sn.beans.ProfilePicture;
 import com.sn.entity.User;
 import com.sn.service.UserService;
 
@@ -75,14 +82,17 @@ public class UserController {
     	}
     	
     }
-
+    
     @PostMapping("/updateprofilepic")
-    public BodyBuilder updateProfilePic(@RequestParam("imageFile") MultipartFile file, String username) throws IOException {
+    public List<String> uploadProfilePic(@RequestParam("imageFile") MultipartFile file) throws IOException {
+    	List<String> rtrn = new ArrayList<String>();
+    	String s = file.getOriginalFilename();
+    	String username = s.replace(".png", "");
+    	System.out.println(username);
     	User user = this.userService.findUserByusername(username);
-    	user.setPicLink(file.getBytes());
-    	this.userService.addUser(user);
-    	return ResponseEntity.status(HttpStatus.OK);
-    }
-    
-    
+        user.setPicLink(file.getBytes());
+        this.userService.addUser(user);
+        rtrn.add("updated profile pic son");
+        return rtrn;
+    }    
 }

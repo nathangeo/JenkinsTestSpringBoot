@@ -32,7 +32,7 @@ public class User {
     @Column(name = "LAST_NAME")
     private String lastName;
     
-    @Column(name="PICTURE_LINK", nullable = true)
+    @Column(name="PICTURE_LINK", nullable = true, columnDefinition="BLOB")
     private byte[] picLink;
 
   
