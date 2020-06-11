@@ -1,5 +1,6 @@
 package com.sn.service;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -36,4 +37,13 @@ import com.sn.entity.User;
     	 this.userDao.save(u);
     	 return u;
      }     
+
+     public List<byte[]> getProfilePic(String username) {
+    	 List<byte[]> b = new ArrayList<byte[]>();
+    	 User user = this.userDao.findUserByUsername(username);
+    	 b.add(user.getPicLink());
+    	 return b;
+     }
+     
+
 }

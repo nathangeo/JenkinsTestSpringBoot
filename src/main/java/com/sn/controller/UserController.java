@@ -44,10 +44,10 @@ public class UserController {
     }
     
     @RequestMapping(value = "/findbyusername", method = RequestMethod.POST,
-    		consumes = MediaType.ALL_VALUE, produces = MediaType.APPLICATION_JSON_VALUE)
+    		consumes = MediaType.APPLICATION_JSON_VALUE, produces = MediaType.APPLICATION_JSON_VALUE)
     @ResponseStatus(code = HttpStatus.OK)
-    public User findUserByUsername(@RequestBody String username) {
-    	return this.userService.findUserByusername(username);
+    public User findUserByUsername(@RequestBody User user) {
+    	return this.userService.findUserByusername(user.getUsername());
     }
     
     @RequestMapping(value = "/login", method = RequestMethod.POST,
@@ -86,4 +86,13 @@ public class UserController {
         rtrn.add("Successfully updated profile pic");
         return rtrn;
     }    
+
+    @RequestMapping(value = "/getprofilepic", method = RequestMethod.POST,
+    		consumes = MediaType.APPLICATION_JSON_VALUE, produces = MediaType.APPLICATION_JSON_VALUE)
+    @ResponseStatus(code = HttpStatus.OK)
+    public List<byte[]> getProfilePic(@RequestBody User user) {
+    	return this.userService.getProfilePic(user.getUsername());
+    }
+
+
 }

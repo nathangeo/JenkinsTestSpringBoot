@@ -1,6 +1,8 @@
 package com.sn.entity;
 
 
+import java.util.Arrays;
+
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -85,6 +87,11 @@ public class User {
 	
 	
 	
+	public User(String username) {
+		super();
+		this.username = username;
+	}
+
 	public User(String username, String password) {
 		super();
 		this.username = username;
@@ -150,8 +157,10 @@ public class User {
 	@Override
 	public String toString() {
 		return "User [id=" + id + ", username=" + username + ", password=" + password + ", email=" + email
-				+ ", firstName=" + firstName + ", lastName=" + lastName + "]";
+				+ ", firstName=" + firstName + ", lastName=" + lastName + ", picLink=" + Arrays.toString(picLink) + "]";
 	}
+
+	
 
     
   
