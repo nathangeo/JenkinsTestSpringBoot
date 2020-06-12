@@ -21,4 +21,9 @@ public class PostService {
     public List<Post> getAllPosts() {
         return this.postdao.findAll();
     }
+
+    public List<Post> getAllPostsOrdered() {
+    	return this.postdao.findByOrderByDateDesc();
+    }
+
 }

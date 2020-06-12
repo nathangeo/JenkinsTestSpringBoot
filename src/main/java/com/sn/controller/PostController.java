@@ -38,4 +38,12 @@ public class PostController {
     public List<Post> getAllPost() {
     	return this.postService.getAllPosts();
     }
+
+    @RequestMapping(value = "/allordered", method = RequestMethod.GET, produces = MediaType.APPLICATION_JSON_VALUE)
+    @ResponseStatus(code = HttpStatus.OK)
+    @ResponseBody()
+    public List<Post> getAllPostOrdered() {
+    	return this.postService.getAllPostsOrdered();
+    }
+
 }
