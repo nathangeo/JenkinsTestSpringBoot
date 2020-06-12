@@ -29,12 +29,17 @@ public class Post {
     @Column(name = "POST_BODY")
     private String post;
     
-    @Column(name = "POST_IMAGE")
-    private String image;
-    
+    @Column(name = "POST_IMAGE", nullable = true, columnDefinition="BLOB")
+    private byte[] image;
     
     @Column(name = "POST_TIME")
     private String date;
+    
+    @Column(name = "IS_LIKED", columnDefinition="integer default 0")
+    private int isLiked;
+    
+    @Column(name = "LIKE_COUNT", columnDefinition="integer default 0")
+    private int likeCount;
     
     @PrePersist
     protected void prePersist() {
@@ -44,45 +49,12 @@ public class Post {
         }
     }
 
-    
 	public Post() {
 		super();
 	}
 
-	public Post(Integer id) {
+	public Post(String username, String post, byte[] image) {
 		super();
-		this.id = id;
-	}
-
-	public Post(String username) {
-		super();
-		this.username = username;
-	}
-
-	public Post(Integer id, String username) {
-		super();
-		this.id = id;
-		this.username = username;
-	}
-
-	
-	
-	public Post(String username, String post, String image) {
-		super();
-		this.username = username;
-		this.post = post;
-		this.image = image;
-	}
-
-	public Post(String username, String post) {
-		super();
-		this.username = username;
-		this.post = post;
-	}
-
-	public Post(Integer id, String username, String post, String image) {
-		super();
-		this.id = id;
 		this.username = username;
 		this.post = post;
 		this.image = image;
@@ -112,38 +84,44 @@ public class Post {
 		this.post = post;
 	}
 
-	public String getImage() {
+	public byte[] getImage() {
 		return image;
 	}
 
-	public void setImage(String image) {
+	public void setImage(byte[] image) {
 		this.image = image;
 	}
-
 
 	public String getDate() {
 		return date;
 	}
 
-
 	public void setDate(String date) {
 		this.date = date;
 	}
 
+	public int getIsLiked() {
+		return isLiked;
+	}
+
+	public void setIsLiked(int isLiked) {
+		this.isLiked = isLiked;
+	}
+
+	public int getLikeCount() {
+		return likeCount;
+	}
+
+	public void setLikeCount(int likeCount) {
+		this.likeCount = likeCount;
+	}
 
 	@Override
 	public String toString() {
-		return "Post [id=" + id + ", username=" + username + ", post=" + post + ", image=" + image + ", date=" + date
-				+ "]";
+		return "Post [id=" + id + ", username=" + username + ", post=" + post + ", date=" + date + ", isLiked="
+				+ isLiked + ", likeCount=" + likeCount + "]";
 	}
 
-
 	
-
-	
-	
-
     
-    
-	
 }
