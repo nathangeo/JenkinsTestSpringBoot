@@ -45,5 +45,4 @@ import com.sn.entity.User;
     	 return b;
      }
      
-
 }

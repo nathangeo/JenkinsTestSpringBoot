@@ -21,24 +21,31 @@ public class Likes {
 	
 	@Column(name = "COMMENT_ID")
 	private Integer cId;
+	
+	@Column(name = "USERNAME")
+	private String username;
+
+	public Likes(Integer id, Integer pId, Integer cId, String username) {
+		super();
+		this.id = id;
+		this.pId = pId;
+		this.cId = cId;
+		this.username = username;
+	}
 
 	public Likes() {
 		super();
 	}
 
-	
-	
-	public Likes(Integer pId) {
-		super();
-		this.pId = pId;
-	}
-
-
-
 	public Likes(Integer pId, Integer cId) {
 		super();
 		this.pId = pId;
 		this.cId = cId;
+	}
+
+	public Likes(String username) {
+		super();
+		this.username = username;
 	}
 
 	public Integer getId() {
@@ -65,10 +72,17 @@ public class Likes {
 		this.cId = cId;
 	}
 
+	public String getUsername() {
+		return username;
+	}
+
+	public void setUsername(String username) {
+		this.username = username;
+	}
+
 	@Override
 	public String toString() {
-		return "Likes [id=" + id + ", pId=" + pId + ", cId=" + cId + "]";
+		return "Likes [id=" + id + ", pId=" + pId + ", cId=" + cId + ", username=" + username + "]";
 	}
-	
 	
 }

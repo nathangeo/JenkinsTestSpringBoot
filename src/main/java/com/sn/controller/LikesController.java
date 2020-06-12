@@ -1,5 +1,6 @@
 package com.sn.controller;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -35,9 +36,36 @@ public class LikesController {
     @RequestMapping(value = "/all", method = RequestMethod.GET, produces = MediaType.APPLICATION_JSON_VALUE)
     @ResponseStatus(code = HttpStatus.OK)
     @ResponseBody()
-    public List<Likes> getAllPost() {
+    public List<Likes> getAllLikes() {
     	return this.likeservice.getAllLikes();
     }
 	
-	
+    @RequestMapping(value = "/isliked", method = RequestMethod.POST,
+    		consumes = MediaType.APPLICATION_JSON_VALUE, produces = MediaType.APPLICATION_JSON_VALUE)
+    @ResponseStatus(code = HttpStatus.OK)
+    @ResponseBody()
+    public List<Integer> isLiked(@RequestBody Likes l) {
+    	return this.likeservice.findLikesByPIdAndUsername(l.getpId(), l.getUsername());
+    }
+    
+    @RequestMapping(value = "/likecount", method = RequestMethod.POST,
+    		consumes = MediaType.APPLICATION_JSON_VALUE, produces = MediaType.APPLICATION_JSON_VALUE)
+    @ResponseStatus(code = HttpStatus.OK)
+    @ResponseBody()
+    public List<Integer> getLikeCount(@RequestBody Likes l) {
+    	List<Likes> likes =  this.likeservice.findLikesByPid(l.getpId());
+    	int i = likes.size();
+    	List<Integer> intlist = new ArrayList<Integer>();
+    	intlist.add(i);
+    	return intlist;
+    }
+    
+    @RequestMapping(value = "/deletelike", method = RequestMethod.POST,
+    		consumes = MediaType.APPLICATION_JSON_VALUE, produces = MediaType.APPLICATION_JSON_VALUE)
+    @ResponseStatus(code = HttpStatus.OK)
+    @ResponseBody()
+    public List<String> deleteLike(@RequestBody Likes l) {
+    	return this.likeservice.deleteLikesByPIdAndUsername(l.getpId(), l.getUsername());
+    }
+    
 }
