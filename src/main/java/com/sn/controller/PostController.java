@@ -46,4 +46,13 @@ public class PostController {
     	return this.postService.getAllPostsOrdered();
     }
 
+    @RequestMapping(value = "/userordered", method = RequestMethod.POST,
+            consumes = MediaType.APPLICATION_JSON_VALUE, produces = MediaType.APPLICATION_JSON_VALUE)
+    @ResponseStatus(code = HttpStatus.OK)
+    @ResponseBody()
+    public List<Post> getFirst15PostsByUsernameOrdered(@RequestBody Post p) {
+        return this.postService.getPostsByUsername(p.getUsername());
+    }
+    
+    
 }

@@ -11,5 +11,6 @@ import com.sn.entity.Post;
 public interface PostDAO extends JpaRepository<Post, Integer> {
 	
 	public List<Post> findByOrderByDateDesc();
+	public List<Post> findFirst15ByUsernameOrderByDate(String username);
 	
 }
