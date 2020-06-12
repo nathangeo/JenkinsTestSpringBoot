@@ -1,5 +1,6 @@
 package com.sn.entity;
 
+import java.sql.Timestamp;
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
@@ -11,6 +12,8 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.PrePersist;
 import javax.persistence.Table;
+import javax.persistence.Temporal;
+import javax.persistence.TemporalType;
 
 
 @Entity
@@ -33,7 +36,7 @@ public class Post {
     private byte[] image;
     
     @Column(name = "POST_TIME")
-    private String date;
+    private java.sql.Timestamp date;
     
     @Column(name = "IS_LIKED", columnDefinition="integer default 0")
     private int isLiked;
@@ -44,8 +47,9 @@ public class Post {
     @PrePersist
     protected void prePersist() {
         if (this.date == null) {
-        	DateFormat df = new SimpleDateFormat("MM/dd/yy HH:mm:ss");
-        	date = df.format(Calendar.getInstance().getTime());
+        	long millis = System.currentTimeMillis();
+        	java.sql.Timestamp ts = new java.sql.Timestamp(millis);
+        	this.date = ts;
         }
     }
 
@@ -92,11 +96,11 @@ public class Post {
 		this.image = image;
 	}
 
-	public String getDate() {
+	public Timestamp getDate() {
 		return date;
 	}
 
-	public void setDate(String date) {
+	public void setDate(Timestamp date) {
 		this.date = date;
 	}
 
