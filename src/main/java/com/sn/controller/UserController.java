@@ -94,5 +94,11 @@ public class UserController {
     	return this.userService.getProfilePic(user.getUsername());
     }
 
+    @RequestMapping(value = "/usersearch", method = RequestMethod.POST,
+    		consumes = MediaType.APPLICATION_JSON_VALUE, produces = MediaType.APPLICATION_JSON_VALUE)
+    @ResponseStatus(code = HttpStatus.OK)
+    public List<User> searchForUser(@RequestBody User user) {
+    	return this.userService.findUserByUsernameContaining(user.getUsername());
+    }
 
 }

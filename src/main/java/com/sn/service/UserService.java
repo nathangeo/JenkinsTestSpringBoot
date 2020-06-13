@@ -44,5 +44,11 @@ import com.sn.entity.User;
     	 b.add(user.getPicLink());
     	 return b;
      }
+    
+     public List<User> findUserByUsernameContaining(String search) {
+    	 return this.userDao.findUserByUsernameContaining(search);
+     }
+     
+     
      
 }
