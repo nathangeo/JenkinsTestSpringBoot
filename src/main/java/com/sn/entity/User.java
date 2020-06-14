@@ -18,13 +18,13 @@ public class User {
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Integer id;
   
-    @Column(name = "USERNAME")
+    @Column(name = "USERNAME", unique = true)
     private String username;
   
     @Column(name = "PASSWORD")
     private String password;
     
-    @Column(name = "USER_EMAIL")
+    @Column(name = "USER_EMAIL", unique = true)
     private String email;
     
     @Column(name = "FIRST_NAME")
